@@ -18,7 +18,7 @@
         /// <summary>
         /// 标题
         /// </summary>
-        public const string Caption = "AspNet网站运行助手20 GUI";
+        public const string Caption = "AspNet网站运行助手40 GUI";
         /// <summary>
         /// 描述
         /// </summary>
