@@ -39,9 +39,9 @@ namespace AspNet40.UI
             }
             try
             {
-                RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\AspNet");
+                RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\" + Config.AppName);
                 string text = registryKey.GetValue(null).ToString();
-                if (registryKey.GetValue(null).ToString().Trim() == "在此启动 AspNet 服务器")
+                if (registryKey.GetValue(null).ToString().Trim() == Config.MenuStartName)
                 {
                     this.chkAddMenu.Checked = true;
                 }
@@ -93,15 +93,15 @@ namespace AspNet40.UI
 
                     if (this.chkAddMenu.Checked)
                     {
-                        RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey("AspNet");
-                        registryKey.SetValue("", "在此启动 AspNet 服务器");
-                        registryKey.CreateSubKey("command").SetValue("", "\"C:\\Windows\\AspNet20.EXE\" \"%1\"");
+                        RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey(Config.AppName);
+                        registryKey.SetValue("", Config.MenuStartName);
+                        registryKey.CreateSubKey("command").SetValue("", "\"" + Config.MenuStartPaht + "\" \"%1\"");
                         registryKey.Close();
                     }
                     else
                     {
-                        Registry.ClassesRoot.OpenSubKey("Directory\\shell\\AspNet", true).DeleteSubKey("command");
-                        Registry.ClassesRoot.OpenSubKey("Directory\\shell", true).DeleteSubKey("AspNet");
+                        Registry.ClassesRoot.OpenSubKey("Directory\\shell\\" + Config.AppName, true).DeleteSubKey("command");
+                        Registry.ClassesRoot.OpenSubKey("Directory\\shell", true).DeleteSubKey(Config.AppName);
                     }
                     Application.Restart();
                     base.Close();

@@ -2,7 +2,7 @@
 
 namespace AspNet20.UI
 {
-    public partial class Show : AspNet20.UI.BaseForm
+    public partial class Show : BaseForm
     {
         public Show(string rootUrl, string path)
         {

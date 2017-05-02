@@ -7,10 +7,17 @@
         /// </summary>
         public static readonly string Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         /// <summary>
+        /// 程序名称
+        /// </summary>
+        public static readonly string AppName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+        /// <summary>
+        /// 右键菜单名称
+        /// </summary>
+        public static readonly string MenuStartName = string.Format("在此启动 {0} 服务器", AppName);
+        /// <summary>
         /// 右键菜单启动路径(带文件名)
         /// </summary>
-        public static readonly string MenuStartPaht = string.Format("C:\\Windows\\{0}.EXE",
-            System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+        public static readonly string MenuStartPaht = string.Format("C:\\Windows\\{0}.exe",AppName);
         /// <summary>
         /// 作者
         /// </summary>
@@ -31,6 +38,5 @@
         /// 博客
         /// </summary>
         public const string Blog = "http://blog.iwenli.org";
-
     }
 }

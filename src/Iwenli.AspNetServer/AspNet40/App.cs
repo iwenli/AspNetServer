@@ -28,8 +28,8 @@ namespace AspNet40
             {
                 try
                 {
-                    RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey("AspNet");
-                    registryKey.SetValue("", "在此启动 AspNet40 服务器");
+                    RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey(Config.AppName);
+                    registryKey.SetValue("", Config.MenuStartName);
                     registryKey.CreateSubKey("command").SetValue("", "\"" + Config.MenuStartPaht + "\" \"%1\"");
                     registryKey.Close();
                 }
