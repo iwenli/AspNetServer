@@ -93,22 +93,19 @@ namespace AspNet40.UI
 
                     if (this.chkAddMenu.Checked)
                     {
-                        RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey(Config.AppName);
-                        registryKey.SetValue("", Config.MenuStartName);
-                        registryKey.CreateSubKey("command").SetValue("", "\"" + Config.MenuStartPaht + "\" \"%1\"");
-                        registryKey.Close();
+                        RegisterHelper.RegisterRightClick();
                     }
                     else
                     {
-                        Registry.ClassesRoot.OpenSubKey("Directory\\shell\\" + Config.AppName, true).DeleteSubKey("command");
-                        Registry.ClassesRoot.OpenSubKey("Directory\\shell", true).DeleteSubKey(Config.AppName);
+                        RegisterHelper.CancelRightClick();
                     }
                 }
                 catch (Exception ex)
                 {
                     //AppMessage.Show(ex.Message);
                 }
-                Application.Restart();
+                AppMessage.Show("保存成功,下次启动生效.", MessageBoxIcon.Asterisk);
+                //Application.Restart();
                 base.Close();
             };
         }

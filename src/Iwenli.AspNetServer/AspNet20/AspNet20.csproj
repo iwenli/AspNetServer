@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Utility\AppMessage.cs" />
     <Compile Include="Utility\Config.cs" />
+    <Compile Include="Utility\RegisterHelper.cs" />
     <EmbeddedResource Include="AppForm.resx">
       <DependentUpon>AppForm.cs</DependentUpon>
     </EmbeddedResource>

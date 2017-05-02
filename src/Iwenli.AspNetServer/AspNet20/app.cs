@@ -24,35 +24,7 @@ namespace AspNet20
             #endregion
 
             #region 注册右键
-            if (!File.Exists(Config.MenuStartPaht))
-            {
-                try
-                {
-                    RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey(Config.AppName);
-                    registryKey.SetValue("", Config.MenuStartName);
-                    registryKey.CreateSubKey("command").SetValue("", "\"" + Config.MenuStartPaht + "\" \"%1\"");
-                    registryKey.Close();
-                }
-                catch (Exception ex)
-                {
-                    if (ex.Message.Contains("不允许"))
-                    {
-                        AppMessage.Show("在右键中启动服务器.\n需要以管理员权限运行!", MessageBoxIcon.Asterisk);
-                    }
-                }
-            }
-            string location = Assembly.GetExecutingAssembly().Location;
-            try
-            {
-                if (File.Exists(Config.MenuStartPaht))
-                {
-                    File.Delete(Config.MenuStartPaht);
-                }
-                File.Copy(location, Config.MenuStartPaht);
-            }
-            catch
-            {
-            }
+            RegisterHelper.RegisterRightClick();
             #endregion
 
             #region 参数初始化
