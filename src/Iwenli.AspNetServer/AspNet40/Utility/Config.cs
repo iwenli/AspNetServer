@@ -33,7 +33,7 @@
         /// <summary>
         /// 自定义端口存储文件路径(带文件名)
         /// </summary>
-        public const string PortIniPath = "bin\\port.ini";
+        public const string PortIniPath = "port.ini";
         /// <summary>
         /// 博客
         /// </summary>

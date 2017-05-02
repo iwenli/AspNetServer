@@ -60,7 +60,7 @@ namespace AspNet40.UI
             //只能输入数字
             txtPort.KeyPress += (sender, e) =>
             {
-                if (e.KeyChar != '\b' && (e.KeyChar < 47 || e.KeyChar > 56))
+                if (e.KeyChar != '\b' && (e.KeyChar < 47 || e.KeyChar > 57))
                 {
                     e.Handled = true;
                 }
@@ -108,7 +108,7 @@ namespace AspNet40.UI
                 }
                 catch (Exception ex)
                 {
-                    AppMessage.Show(ex.Message);
+                    //AppMessage.Show(ex.Message);
                 }
             };
         }
