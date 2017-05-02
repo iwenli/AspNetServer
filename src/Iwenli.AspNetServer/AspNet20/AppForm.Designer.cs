@@ -1,4 +1,4 @@
-Ôªønamespace AspNet20
+namespace AspNet20
 {
     partial class AppForm
     {
@@ -70,7 +70,7 @@
             this.menuOpen.Image = global::AspNet20.Properties.Resources.ie;
             this.menuOpen.Name = "menuOpen";
             this.menuOpen.Size = new System.Drawing.Size(207, 22);
-            this.menuOpen.Text = "Âú®WebÊµèËßàÂô®‰∏≠ÊâìÂºÄ(&W)";
+            this.menuOpen.Text = "‘⁄Web‰Ø¿¿∆˜÷–¥Úø™(&W)";
             // 
             // toolStripSeparator1
             // 
@@ -82,7 +82,7 @@
             this.menuShow.Image = global::AspNet20.Properties.Resources.show;
             this.menuShow.Name = "menuShow";
             this.menuShow.Size = new System.Drawing.Size(207, 22);
-            this.menuShow.Text = "ÊòæÁ§∫(&D)";
+            this.menuShow.Text = "œ‘ æ(&D)";
             // 
             // toolStripSeparator2
             // 
@@ -94,7 +94,7 @@
             this.menuAbout.Image = global::AspNet20.Properties.Resources.about;
             this.menuAbout.Name = "menuAbout";
             this.menuAbout.Size = new System.Drawing.Size(207, 22);
-            this.menuAbout.Text = "ÂÖ≥‰∫é(&A)";
+            this.menuAbout.Text = "πÿ”⁄(&A)";
             // 
             // toolStripSeparator3
             // 
@@ -106,7 +106,7 @@
             this.menuSetting.Image = global::AspNet20.Properties.Resources.setting;
             this.menuSetting.Name = "menuSetting";
             this.menuSetting.Size = new System.Drawing.Size(207, 22);
-            this.menuSetting.Text = "ËÆæÁΩÆ(&S)";
+            this.menuSetting.Text = "…Ë÷√(&S)";
             // 
             // toolStripSeparator4
             // 
@@ -118,7 +118,7 @@
             this.menuEixt.Image = global::AspNet20.Properties.Resources.exit;
             this.menuEixt.Name = "menuEixt";
             this.menuEixt.Size = new System.Drawing.Size(207, 22);
-            this.menuEixt.Text = "ÈÄÄÂá∫(&E)";
+            this.menuEixt.Text = "ÕÀ≥ˆ(&E)";
             // 
             // AppForm
             // 
