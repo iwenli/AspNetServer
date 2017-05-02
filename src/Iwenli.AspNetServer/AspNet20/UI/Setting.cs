@@ -102,14 +102,14 @@ namespace AspNet20.UI
                     {
                         Registry.ClassesRoot.OpenSubKey("Directory\\shell\\" + Config.AppName, true).DeleteSubKey("command");
                         Registry.ClassesRoot.OpenSubKey("Directory\\shell", true).DeleteSubKey(Config.AppName);
-                    }
-                    Application.Restart();
-                    base.Close();
+                    } 
                 }
                 catch (Exception ex)
                 {
                     //AppMessage.Show(ex.Message);
                 }
+                Application.Restart();
+                base.Close();
             };
         }
     }
