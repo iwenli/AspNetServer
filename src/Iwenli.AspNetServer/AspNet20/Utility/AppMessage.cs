@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Windows.Forms;
 
-namespace Iwenli.Simulateiis.Utility
+namespace AspNet20.Utility
 {
     public static class AppMessage
     {

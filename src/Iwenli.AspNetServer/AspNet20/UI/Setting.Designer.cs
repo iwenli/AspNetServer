@@ -1,4 +1,4 @@
-﻿namespace Iwenli.Simulateiis.UI
+﻿namespace AspNet20.UI
 {
     partial class Setting
     {

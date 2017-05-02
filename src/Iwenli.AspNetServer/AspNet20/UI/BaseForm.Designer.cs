@@ -1,6 +1,4 @@
-﻿using Iwenli.Simulateiis.Utility;
-
-namespace Iwenli.Simulateiis.UI
+﻿namespace AspNet20.UI
 {
     partial class BaseForm
     {
@@ -37,7 +35,7 @@ namespace Iwenli.Simulateiis.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 261);
+            this.ClientSize = new System.Drawing.Size(308, 189);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -45,11 +43,9 @@ namespace Iwenli.Simulateiis.UI
             this.Opacity = 0.95D;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AspNet网站运行助手 V1.0";
             this.ResumeLayout(false);
 
         }
-
         #endregion
     }
 }

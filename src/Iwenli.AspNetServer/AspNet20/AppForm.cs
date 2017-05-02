@@ -1,22 +1,14 @@
-﻿using Iwenli.Simulateiis.Utility;
-using Iwenli.Simulateiis.WebHost;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using AspNet20.Utility;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
-namespace Iwenli.Simulateiis
+namespace AspNet20
 {
     public partial class AppForm : Form
     {
-        private Server m_server;
+        private Server.Server m_server;
 
-        public AppForm(Server server)
+        public AppForm(Server.Server server)
         {
             InitializeComponent();
 
@@ -28,8 +20,9 @@ namespace Iwenli.Simulateiis
         /// 初始化工作
         /// </summary>
         /// <param name="server"></param>
-        private void Init(Server server)
+        private void Init(Server.Server server)
         {
+            this.Text = Config.Caption;
             this.WindowState = FormWindowState.Minimized;
             this.m_server = server;
             //托盘提示
@@ -38,18 +31,17 @@ namespace Iwenli.Simulateiis
             string msg = string.Format("URL：{0}\r\nPath：{1}", m_server.RootUrl, m_server.PhysicalPath);
             this.notify.ShowBalloonTip(1000, Config.Caption, msg, ToolTipIcon.Info);
             //启动
-            DoLaunch();
+            Open();
         }
         /// <summary>
         /// 绑定事件
         /// </summary>
         private void BindEvent()
         {
-
             //双击notify
-            this.notify.DoubleClick += (s, e) => { DoLaunch(); };
+            this.notify.DoubleClick += (s, e) => { Open(); };
             //在web中打开
-            this.menuOpen.Click += (s, e) => { DoLaunch(); };
+            this.menuOpen.Click += (s, e) => { Open(); };
             //显示
             this.menuShow.Click += (s, e) => { new UI.Show(m_server.RootUrl, m_server.PhysicalPath).Show(); };
             //关于
@@ -57,14 +49,12 @@ namespace Iwenli.Simulateiis
             //设置
             this.menuSetting.Click += (s, e) => { new UI.Setting(m_server.PhysicalPath).Show(); };
             //退出
-
-            this.menuEixt.Click += (s, e) => {Application.Exit();};
-
+            this.menuEixt.Click += (s, e) => { Application.Exit(); };
         }
         /// <summary>
         /// 打开主页
         /// </summary>
-        private void DoLaunch()
+        private void Open()
         {
             Process.Start(m_server.RootUrl);
         }

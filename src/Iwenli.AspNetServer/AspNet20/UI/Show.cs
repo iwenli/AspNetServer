@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Diagnostics;
 
-namespace Iwenli.Simulateiis.UI
+namespace AspNet20.UI
 {
-    public partial class Show : BaseForm
+    public partial class Show : AspNet20.UI.BaseForm
     {
         public Show(string rootUrl, string path)
         {

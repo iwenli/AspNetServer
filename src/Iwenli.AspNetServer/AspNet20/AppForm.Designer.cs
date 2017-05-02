@@ -1,6 +1,4 @@
-﻿using Iwenli.Simulateiis.Utility;
-
-namespace Iwenli.Simulateiis
+﻿namespace AspNet20
 {
     partial class AppForm
     {
@@ -35,21 +33,21 @@ namespace Iwenli.Simulateiis
             this.notify = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSetting = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEixt = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuShow = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuEixt = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // notify
             // 
             this.notify.ContextMenuStrip = this.contextMenuStrip1;
-            this.notify.Icon = ((System.Drawing.Icon)(resources.GetObject("notify.Icon"))); 
+            this.notify.Icon = ((System.Drawing.Icon)(resources.GetObject("notify.Icon")));
             this.notify.Visible = true;
             // 
             // contextMenuStrip1
@@ -65,57 +63,62 @@ namespace Iwenli.Simulateiis
             this.toolStripSeparator4,
             this.menuEixt});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(208, 138);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(208, 160);
             // 
             // menuOpen
             // 
+            this.menuOpen.Image = global::AspNet20.Properties.Resources.ie;
             this.menuOpen.Name = "menuOpen";
             this.menuOpen.Size = new System.Drawing.Size(207, 22);
             this.menuOpen.Text = "在Web浏览器中打开(&W)";
-            // 
-            // menuShow
-            // 
-            this.menuShow.Name = "menuShow";
-            this.menuShow.Size = new System.Drawing.Size(207, 22);
-            this.menuShow.Text = "显示(&D)";
-            // 
-            // menuSetting
-            // 
-            this.menuSetting.Name = "menuSetting";
-            this.menuSetting.Size = new System.Drawing.Size(207, 22);
-            this.menuSetting.Text = "设置(&S)";
-            // 
-            // menuAbout
-            // 
-            this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(207, 22);
-            this.menuAbout.Text = "关于(&A)";
-            // 
-            // menuEixt
-            // 
-            this.menuEixt.Name = "menuEixt";
-            this.menuEixt.Size = new System.Drawing.Size(207, 22);
-            this.menuEixt.Text = "退出(&E)";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(204, 6);
             // 
+            // menuShow
+            // 
+            this.menuShow.Image = global::AspNet20.Properties.Resources.show;
+            this.menuShow.Name = "menuShow";
+            this.menuShow.Size = new System.Drawing.Size(207, 22);
+            this.menuShow.Text = "显示(&D)";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+            // 
+            // menuAbout
+            // 
+            this.menuAbout.Image = global::AspNet20.Properties.Resources.about;
+            this.menuAbout.Name = "menuAbout";
+            this.menuAbout.Size = new System.Drawing.Size(207, 22);
+            this.menuAbout.Text = "关于(&A)";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(204, 6);
             // 
+            // menuSetting
+            // 
+            this.menuSetting.Image = global::AspNet20.Properties.Resources.setting;
+            this.menuSetting.Name = "menuSetting";
+            this.menuSetting.Size = new System.Drawing.Size(207, 22);
+            this.menuSetting.Text = "设置(&S)";
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(204, 6);
+            // 
+            // menuEixt
+            // 
+            this.menuEixt.Image = global::AspNet20.Properties.Resources.exit;
+            this.menuEixt.Name = "menuEixt";
+            this.menuEixt.Size = new System.Drawing.Size(207, 22);
+            this.menuEixt.Text = "退出(&E)";
             // 
             // AppForm
             // 
@@ -123,12 +126,11 @@ namespace Iwenli.Simulateiis
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 153);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AppForm";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AspNet网站运行助手";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
