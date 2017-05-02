@@ -1,8 +1,6 @@
-﻿using Iwenli.Simulateiis.Utility;
-
-namespace Iwenli.Simulateiis.UI
+﻿namespace AspNet20.UI
 {
-    partial class About
+    partial class About : BaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -55,8 +53,6 @@ namespace Iwenli.Simulateiis.UI
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(346, 133);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "\n    将此程序拷贝至您的网站根目录，然后运行此程序，您的网站即可浏览了。\n    如果您运行此助手程序遇到了什么问题还可以直接跟 作者<IWenli> 交流哦" +
-    "！\n\n    博客：http://blog.iwenli.org/";
             // 
             // About
             // 

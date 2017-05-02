@@ -1,5 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AspNet20.Utility;
+using Microsoft.Win32;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
 namespace AspNet20
@@ -13,22 +18,18 @@ namespace AspNet20
         public static int Main(string[] args)
         {
             #region 返回值错误码
-            // -1 vpath路径错误
-            // -2 path路径为空
-            // -3 path路径不存在
-            // -4 port为无效数字
-            // -5 port超出范围[应该为1~65535]
-            // -6 port已结被使用
+            // -1 path路径不存在
+            // -2 port超出范围[应该为1~65535]
+            // -3 port已结被使用
             #endregion
 
             #region 注册右键
-
             if (!File.Exists(Config.MenuStartPaht))
             {
                 try
                 {
                     RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey("AspNet");
-                    registryKey.SetValue("", "在此启动 AspNet 服务器");
+                    registryKey.SetValue("", "在此启动 AspNet20 服务器");
                     registryKey.CreateSubKey("command").SetValue("", "\"" + Config.MenuStartPaht + "\" \"%1\"");
                     registryKey.Close();
                 }
@@ -36,7 +37,7 @@ namespace AspNet20
                 {
                     if (ex.Message.Contains("不允许"))
                     {
-                        AppMessage.Show("请以管理员身份运行!", MessageBoxIcon.Asterisk);
+                        AppMessage.Show("在右键中启动服务器.\n需要以管理员权限运行!", MessageBoxIcon.Asterisk);
                     }
                 }
             }
@@ -55,82 +56,28 @@ namespace AspNet20
             #endregion
 
             #region 参数初始化
-            string str = AppDomain.CurrentDomain.BaseDirectory;
+            int port = new Random().Next(3000, 65535);
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string vpath = "/";
             if (args.Length != 0)
             {
-                str = args[0];
-            }
-            string[] array = new string[]
-            {
-                "-port:" + new Random().Next(3000, 65535).ToString(),
-                "-path:" + str,
-                "-vpath:"
-            };
-            args = array;
-
-            CommandLine commandLine = new CommandLine(args);
-            #endregion
-
-
-            #region vpath  处理
-            string vpath = (string)commandLine.Options["vpath"];
-            if (vpath == null || vpath.Trim().Length == 0)
-            {
-                vpath = "/";
-            }
-            if (!vpath.StartsWith("/", StringComparison.Ordinal))
-            {
-                AppMessage.Show(string.Format(Config.Usage, "ASPNET", "ASPNET"));
-                return -1;
+                path = args[0];
             }
             #endregion
 
             #region path 处理
-            string path = (string)commandLine.Options["path"];
-            if (path == null || path.Trim().Length == 0)
-            {
-                AppMessage.Show(Config.Usage);
-                return -2;
-            }
-
             if (!Directory.Exists(path))
             {
                 AppMessage.Show("The directory '" + path + "' does not exist.");
-                return -3;
+                return -1;
             }
             if (path.EndsWith("\\", StringComparison.Ordinal) == false)
             {
                 path += "\\";
             }
-
             #endregion
 
             #region port 处理
-            int port = 0;
-            string portStr = (string)commandLine.Options["port"];
-
-            if (portStr == null || portStr.Trim().Length == 0)
-            {
-                port = 80;
-            }
-            else
-            {
-                try
-                {
-                    port = int.Parse(portStr, CultureInfo.InvariantCulture);
-                }
-                catch
-                {
-                    AppMessage.Show("Invalid port'" + port + "'");
-                    return -4;
-                }
-
-                if (port < 1 || port > 65535)
-                {
-                    AppMessage.Show("Port is between 1 and 65535.");
-                    return -5;
-                }
-            }
             //从配置中读取端口
             if (File.Exists(path + Config.PortIniPath))
             {
@@ -145,13 +92,17 @@ namespace AspNet20
                 {
                 }
             }
+            if (port < 1 || port > 65535)
+            {
+                AppMessage.Show("Port is between 1 and 65535.");
+                return -2;
+            }
             #endregion
 
-            bool requireAuthentication = commandLine.Options["ntlm"] != null;
-
+            #region 创建服务 并 启动
             try
             {
-                Server server = new Server(port, vpath, path, requireAuthentication);
+                Server.Server server = new Server.Server(port, vpath, path, false);
                 server.Start();
 
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -162,8 +113,9 @@ namespace AspNet20
             {
                 AppMessage.Show("端口［" + port + "］已被占用，或已成功建立服务器！");
                 Process.Start("http://localhost:" + port);
-                return -6;
-            }
+                return -3;
+            } 
+            #endregion
 
             return 1;
         }

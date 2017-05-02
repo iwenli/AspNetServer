@@ -1,17 +1,13 @@
-﻿using Iwenli.Simulateiis.Utility;
+﻿using AspNet20.Utility;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Iwenli.Simulateiis.UI
+namespace AspNet20.UI
 {
-    public partial class Setting : BaseForm
+    public partial class Setting : AspNet20.UI.BaseForm
     {
         private string m_webPath = string.Empty;
         public Setting(string path)
@@ -24,17 +20,16 @@ namespace Iwenli.Simulateiis.UI
                 BindEvent();
             };
         }
-
         /// <summary>
         /// 初始化控件状态
         /// </summary>
         private void Init()
         {
-            if (File.Exists(m_webPath + Config.PortIniPath))
+            if (File.Exists(m_webPath + Utility.Config.PortIniPath))
             {
                 try
                 {
-                    StreamReader streamReader = new StreamReader(m_webPath + Config.PortIniPath, Encoding.UTF8);
+                    StreamReader streamReader = new StreamReader(m_webPath + Utility.Config.PortIniPath, Encoding.UTF8);
                     this.txtPort.Text = streamReader.ReadToEnd();
                     streamReader.Close();
                 }
@@ -93,14 +88,14 @@ namespace Iwenli.Simulateiis.UI
                     {
                         StreamWriter streamWriter = new StreamWriter(m_webPath + Config.PortIniPath, false, Encoding.UTF8);
                         streamWriter.Write(this.txtPort.Text);
-                        streamWriter.Close(); 
+                        streamWriter.Close();
                     }
 
                     if (this.chkAddMenu.Checked)
                     {
                         RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey("Directory\\shell\\", true).CreateSubKey("AspNet");
                         registryKey.SetValue("", "在此启动 AspNet 服务器");
-                        registryKey.CreateSubKey("command").SetValue("", "\"C:\\Windows\\Iwenli.Simulateiis.EXE\" \"%1\"");
+                        registryKey.CreateSubKey("command").SetValue("", "\"C:\\Windows\\AspNet20.EXE\" \"%1\"");
                         registryKey.Close();
                     }
                     else
@@ -111,7 +106,7 @@ namespace Iwenli.Simulateiis.UI
                     Application.Restart();
                     base.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     AppMessage.Show(ex.Message);
                 }

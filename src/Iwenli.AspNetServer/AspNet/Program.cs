@@ -42,7 +42,7 @@ namespace AspNet
         #endregion
 
         private static string m_path = AppDomain.CurrentDomain.BaseDirectory;
-        private static int m_port = 8020;
+        private static int m_port = 80;
         private static string m_vpath = @"/";
         private static bool m_requireAuthentication = false;
 

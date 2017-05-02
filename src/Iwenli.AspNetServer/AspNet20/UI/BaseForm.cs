@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace Iwenli.Simulateiis.UI
+namespace AspNet20.UI
 {
     public partial class BaseForm : Form
     {
         public BaseForm()
         {
             InitializeComponent();
+            this.Text = Utility.Config.Caption + " V" + Utility.Config.Version;
         }
     }
 }
